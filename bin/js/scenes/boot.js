@@ -1,3 +1,5 @@
+import {CrtPipeline} from '../pipelines.js';
+
 export class Boot extends Phaser.Scene {
     constructor() {
         super('Boot');
@@ -15,6 +17,11 @@ export class Boot extends Phaser.Scene {
                 families: ['Bungee+Outline', 'Bungee+Hairline']
             }
         });
+
+        this.crtPipeline = this.game.renderer.addPipeline('Crt', new CrtPipeline(this.game));
+        this.crtPipeline.setFloat3('resolution', this.game.config.width, this.game.config.height, 0);
+        this.cameras.main.setRenderToTexture(this.crtPipeline);
+        console.log(this.cameras);
     }
 
     create() {
@@ -38,6 +45,10 @@ export class Boot extends Phaser.Scene {
 
         let title = this.add.text(0, 0, "GAME", {fontFamily: '"Bungee Outline"'});
         this.fillText(title);
+    }
+
+    update(time, delta){
+        this.crtPipeline.setFloat1('time', time / 1000);
     }
 
     fillText(title) {

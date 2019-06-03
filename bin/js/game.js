@@ -2,7 +2,7 @@ import {WebFontLoaderPlugin} from './util/webfontloader.js';
 import {Boot} from './scenes/boot.js';
 
 var config = {
-    type: Phaser.AUTO,
+    type: Phaser.WEBGL,
     width: 800,
     height: 600,
     parent: 'game',
