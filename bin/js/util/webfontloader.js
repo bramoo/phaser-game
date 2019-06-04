@@ -7,7 +7,6 @@ const FILE_POPULATED = Phaser.Loader.FILE_POPULATED;
 
 export class WebFontFile extends Phaser.Loader.File {
     constructor(loader, fileConfig) {
-        console.debug('WebFontFile constructor called', loader, fileConfig);
         super(loader, fileConfig);
     }
 
@@ -45,8 +44,6 @@ export class WebFontFile extends Phaser.Loader.File {
 const IsPlainObject = Phaser.Utils.Objects.IsPlainObject;
 
 let loaderCallback = function (key, config) {
-    console.debug('loaderCallback called', key, config);
-
     if (IsPlainObject(key)) {
         config = key;
         if (config.hasOwnProperty('config')) {
@@ -74,13 +71,11 @@ let loaderCallback = function (key, config) {
 
 export class WebFontLoaderPlugin extends Phaser.Plugins.BasePlugin {
     constructor(pluginManager) {
-        console.debug('WebFontLoaderPlugin constructor called');
         super(pluginManager);
         pluginManager.registerFileType('webfont', loaderCallback);
     }
 
     addToScene(scene) {
-        console.debug('WebFontLoaderPlugin addToScene called');
         scene.sys.load['webfont'] = loaderCallback;
     }
 }
