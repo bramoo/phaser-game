@@ -31,6 +31,7 @@ export class Level extends Phaser.Scene {
         this.fillText(title);
 
         this.player = this.physics.add.sprite(10, 10, 'dude');
+        this.player.body.setSize(32, 64);
         this.player.setCollideWorldBounds(true);
 
         this.anims.create({
