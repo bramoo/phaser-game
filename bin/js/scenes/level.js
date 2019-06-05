@@ -49,7 +49,8 @@ export class Level extends Phaser.Scene {
         });
 
         this.platforms = this.physics.add.staticGroup();
-        this.platforms.create(400, 480, 'platform', null, false);
+        let platform = this.add.rectangle(400, 480, 800, 20, 0xffffff).setVisible(false);
+        this.platforms.add(platform);
 
         this.physics.add.collider(this.player, this.platforms);
 
