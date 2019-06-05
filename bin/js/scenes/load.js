@@ -6,10 +6,8 @@ export class Load extends Phaser.Scene {
     }
 
     preload() {
-        this.barBackground = this.add.sprite(400, 300, 'platform');
-        this.barBackground.tint = 0x111111;
-
-        this.bar = this.add.sprite(0, 300, 'platform').setOrigin(0, 0.5);
+        this.barBackground = this.add.rectangle(400, 300, 600, 20, 0x111111);
+        this.bar = this.add.rectangle(100, 300, 600, 20, 0xffffff).setOrigin(0, 0.5);
         this.bar.displayWidth = 0;
 
         this.load.on('progress', this.updateProgress, this);
@@ -30,9 +28,8 @@ export class Load extends Phaser.Scene {
     }
 
     updateProgress(value) {
-        console.log(value, this.bar);
         if (this.bar) {
-            this.bar.displayWidth = Math.floor(800 * value);
+            this.bar.displayWidth = Math.floor(600 * value);
         }
     }
 
