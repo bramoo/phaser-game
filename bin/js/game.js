@@ -1,7 +1,7 @@
 /// <reference path="./phaser.d.ts" />
-import {WebFontLoaderPlugin} from './util/webfontloader.js';
-import {Load} from './scenes/load.js';
-import {Level} from './scenes/level.js';
+import { WebFontLoaderPlugin } from './util/webfontloader.js';
+import { Load } from './scenes/load.js';
+import { Level } from './scenes/level.js';
 
 var config = {
     type: Phaser.WEBGL,

@@ -1,3 +1,5 @@
+import { LevelData } from "../util/leveldata.js";
+
 export class Level extends Phaser.Scene {
     constructor(){
         super('level');
@@ -48,11 +50,9 @@ export class Level extends Phaser.Scene {
             frames: [{key: 'dude', frame: 7}]
         });
 
-        this.platforms = this.physics.add.staticGroup();
-        let platform = this.add.rectangle(400, 480, 800, 20, 0xffffff).setVisible(false);
-        this.platforms.add(platform);
-
-        this.physics.add.collider(this.player, this.platforms);
+        this.leveldata = new LevelData(this);
+        this.leveldata.setPlayer(this.player);
+        this.leveldata.load('level-01');
 
         this.cursors = this.input.keyboard.createCursorKeys();
     }

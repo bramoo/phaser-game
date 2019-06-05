@@ -23,6 +23,8 @@ export class Load extends Phaser.Scene {
             }
         });
 
+        this.load.json('level-01', 'levels/01.json');
+
         this.crtPipeline = this.game.renderer.addPipeline('crt', new CrtPipeline(this.game));
         this.crtPipeline.setFloat3('resolution', this.game.config.width, this.game.config.height, 0);
     }

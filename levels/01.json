@@ -1,0 +1,46 @@
+{
+    "platforms": [
+        {
+            "x": 400,
+            "y": 480,
+            "width": 800,
+            "height": 10,
+            "colour": "0xFFFFFF"
+        },
+        {
+            "x": 100,
+            "y": 380,
+            "width": 50,
+            "height": 50,
+            "colour": "0xFF71CE"
+        },
+        {
+            "x": 300,
+            "y": 300,
+            "width": 100,
+            "height": 20,
+            "colour": "0x01CDFE"
+        },
+        {
+            "x": 500,
+            "y": 375,
+            "width": 80,
+            "height": 200,
+            "colour": "0x05FFA1"
+        },
+        {
+            "x": 600,
+            "y": 375,
+            "width": 20,
+            "height": 20,
+            "colour": "0xB967FF"
+        },
+        {
+            "x": 700,
+            "y": 425,
+            "width": 20,
+            "height": 20,
+            "colour": "0xFFFB96"
+        }
+    ]
+}
