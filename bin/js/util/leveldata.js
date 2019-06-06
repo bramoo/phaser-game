@@ -4,7 +4,18 @@ export class LevelData {
      */
     constructor(scene) {
         this.scene = scene;
+        this.platformGroup = this.scene.physics.add.staticGroup();
     }
+
+    /**
+     * @type {Phaser.Physics.Arcade.StaticGroup}
+     */
+    platformGroup;
+
+    /**
+     * @type {Phaser.GameObjects.GameObject[]}
+     */
+    platformObjects = [];
 
     /**
      * @param {Phaser.GameObjects.GameObject} player 
@@ -20,13 +31,13 @@ export class LevelData {
         this.data = this.scene.cache.json.get(key);
 
         if ('platforms' in this.data) {
-            this.platforms = this.scene.physics.add.staticGroup();
-
             for (var platformData of this.data['platforms']) {
-                this.platforms.add(this.createPlatform(platformData));
+                let platform = this.createPlatform(platformData);
+                this.platformObjects.push(platform);
+                this.platformGroup.add(platform);
             }
 
-            this.scene.physics.add.collider(this.player, this.platforms);
+            this.scene.physics.add.collider(this.player, this.platformGroup);
         }
     }
 

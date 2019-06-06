@@ -12,6 +12,7 @@ export class Load extends Phaser.Scene {
 
         this.load.on('progress', this.updateProgress, this);
 
+        this.load.image('cursor', 'assets/cursor.png');
         this.load.image('sky', 'assets/space3.png');
         this.load.image('logo', 'assets/phaser3-logo.png');
         this.load.image('red', 'assets/red.png');
