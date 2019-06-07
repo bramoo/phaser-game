@@ -37,9 +37,6 @@ export class Level extends Phaser.Scene {
         this.leveldata.setPlayer(this.player);
         this.leveldata.load('level-01');
 
-        this.editor = new Editor(this, this.leveldata);
-        this.editor.enable();
-
         var particles = this.add.particles('red');
 
         var emitter = particles.createEmitter({
@@ -63,7 +60,10 @@ export class Level extends Phaser.Scene {
     }
 
     update(time, delta) {
-        this.editor.update();
+        if (this.leveldata.editor){
+            this.leveldata.editor.update();
+        }
+        
         this.crtPipeline.setFloat1('time', time / 1000);
         let grounded = this.player.body.touching.down;
 

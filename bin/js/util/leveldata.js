@@ -1,3 +1,5 @@
+import { Editor } from '../util/editor.js';
+
 export class LevelData {
     /**
      * @param {Phaser.Scene} scene
@@ -5,6 +7,9 @@ export class LevelData {
     constructor(scene) {
         this.scene = scene;
         this.platformGroup = this.scene.physics.add.staticGroup();
+        this.editor = new Editor(this);
+
+        this.scene.input.keyboard.on('keydown-E', this.toggleEditor, this);
     }
 
     /**
@@ -64,5 +69,16 @@ export class LevelData {
         }
 
         return platform;
+    }
+
+    /**
+     * @param {KeyboardEvent} event 
+     */
+    toggleEditor(event){
+        if (this.editor.enabled){
+            this.editor.disable();
+        } else{
+            this.editor.enable();
+        }
     }
 }

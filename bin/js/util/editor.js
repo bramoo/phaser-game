@@ -2,14 +2,13 @@ import { LevelData } from './leveldata.js';
 
 export class Editor {
     /**
-     * @param {Phaser.Scene} scene 
      * @param {LevelData} levelData
      */
-    constructor(scene, levelData) {
-        this.scene = scene;
+    constructor(levelData) {
         this.levelData = levelData;
+        this.scene = levelData.scene;
 
-        this.cursor = scene.add.sprite(0, 0, 'cursor');
+        this.cursor = this.scene.add.sprite(0, 0, 'cursor');
         this.cursor.setVisible(false);
         this.enabled = false;
     }
@@ -37,7 +36,13 @@ export class Editor {
     }
 
     disable() {
+        this.enabled = false;
+        this.cursor.setVisible(false);
 
+        for (var object of this.levelData.platformObjects){
+            object.disableInteractive();
+            object.off('pointerdown', this.objectPointerDown);
+        }
     }
 
     update() {
