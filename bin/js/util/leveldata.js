@@ -72,6 +72,14 @@ export class LevelData {
     }
 
     /**
+     * @param {Phaser.GameObjects.Rectangle} shape 
+     */
+    addExistingRectangle(rectangle){
+        this.platformObjects.push(rectangle);
+        this.platformGroup.add(rectangle);
+    }
+
+    /**
      * @param {KeyboardEvent} event 
      */
     toggleEditor(event){

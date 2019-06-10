@@ -2,7 +2,7 @@
     "platforms": [
         {
             "x": 400,
-            "y": 480,
+            "y": 595,
             "width": 800,
             "height": 10,
             "colour": "0xFFFFFF"

@@ -10,7 +10,7 @@ export class Level extends Phaser.Scene {
         this.crtPipeline = this.game.renderer.getPipeline('crt');
         this.cameras.main.setRenderToTexture(this.crtPipeline);
 
-        this.add.image(400, 300, 'sky');
+        // this.add.image(400, 300, 'sky');
 
         this.player = this.physics.add.sprite(10, 10, 'dude');
         this.player.body.setSize(32, 64);
@@ -37,23 +37,7 @@ export class Level extends Phaser.Scene {
         this.leveldata.setPlayer(this.player);
         this.leveldata.load('level-01');
 
-        var particles = this.add.particles('red');
-
-        var emitter = particles.createEmitter({
-            speed: 100,
-            scale: { start: 1, end: 0 },
-            blendMode: 'ADD'
-        });
-
-        var logo = this.physics.add.image(400, 100, 'logo');
-
-        logo.setVelocity(100, 200);
-        logo.setBounce(1, 1);
-        logo.setCollideWorldBounds(true);
-
-        emitter.startFollow(logo);
-
-        let title = this.add.text(0, 0, "GAME", { fontFamily: '"Bungee Outline"' });
+        let title = this.add.text(0, -50, "GAME", { fontFamily: '"Bungee Outline"' });
         this.fillText(title);
 
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -63,7 +47,7 @@ export class Level extends Phaser.Scene {
         if (this.leveldata.editor){
             this.leveldata.editor.update();
         }
-        
+
         this.crtPipeline.setFloat1('time', time / 1000);
         let grounded = this.player.body.touching.down;
 
@@ -85,6 +69,9 @@ export class Level extends Phaser.Scene {
         }
     }
 
+    /**
+     * @param {Phaser.GameObjects.Text} title 
+     */
     fillText(title) {
         let min = 100;
         let max = 200;
